@@ -1,5 +1,4 @@
 #include <Arduino.h>
-#include <cstdint>
 
 // enum class для стану LED
 enum class LedState : uint8_t
@@ -8,6 +7,7 @@ enum class LedState : uint8_t
   LED_STATE_OFF
 };
 
+// static const для параметрів
 class Config
 {
 public:
@@ -62,9 +62,10 @@ void setup()
 
 void loop()
 {
-
+  // millis() для керування часом
   uint32_t now = millis();
 
+  // неблокуючий код (superloop)
   if (now - lastToggleTime >= Config::SHORT_INTERVAL)
   {
     lastToggleTime = now;
